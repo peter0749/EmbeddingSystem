@@ -76,9 +76,19 @@ Kernel 啟動時的參數。可以指定 root 位置、root 檔案系統種類 (
 
 ##### cmdline.txt 的內容、參數：
 
+##### 內容：
+
+root=/dev/mmcblk0p2 rootwait console=tty1 console=ttyAMA0,115200
+
+##### 參數：
+
 root: 指定 root filesystem 的位置
 
 rootwait: 要求 kernel 先等待所有的 module 載入後，再去 mount/read rootfs。主要用途就是等待 MMC storage module 啟動、rootfs 出現後，kernel 才去 mount 它。
+
+console: console 的位置，使用 tty 代表使用虛擬主控台。
+
+##### 可能會用得上的其他參數：
 
 rootfstype: 指定 root filesystem 的種類 (例如: ext4)
 
