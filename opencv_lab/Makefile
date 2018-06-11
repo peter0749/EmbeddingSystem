@@ -14,5 +14,5 @@ detector_webcam: detector_webcam.cpp cvheader.h oCLAHE.o oCLAHE.h
 oCLAHE.o: oCLAHE.cpp oCLAHE.h cvheader.h
 	g++ -w -c `pkg-config --cflags opencv` oCLAHE.cpp -o oCLAHE.o `pkg-config --libs opencv` -g
 clean:
-	rm -f open_img open_vid oCLAHE.o process_img process_vid
+	rm -f open_img open_vid oCLAHE.o process_img process_vid detector detector_webcam
 

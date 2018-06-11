@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
     IplImage *pHistEq = NULL;
     int nFrmNum = 0;
     int fps, frameH, frameW, fourcc;
-    CvVideoWriter *writer;
+    // CvVideoWriter *writer;
     pCapture = cvCaptureFromCAM(0);
     if (!pCapture) return -2;
     cvNamedWindow("WinPlayer", 1);
@@ -48,12 +48,12 @@ int main(int argc, char **argv) {
     while (pImage=cvQueryFrame(pCapture)) {
         ++nFrmNum;
         if (nFrmNum==1) {
-            fps = cvGetCaptureProperty(pCapture, CV_CAP_PROP_FPS);
+            // fps = cvGetCaptureProperty(pCapture, CV_CAP_PROP_FPS);
             frameH = cvGetCaptureProperty(pCapture, CV_CAP_PROP_FRAME_HEIGHT);
             frameW = cvGetCaptureProperty(pCapture, CV_CAP_PROP_FRAME_WIDTH);
-            fourcc = cvGetCaptureProperty(pCapture, CV_CAP_PROP_FOURCC);
-            int AviColor = 1;
-            writer = cvCreateVideoWriter(outvideo, CV_FOURCC('M', 'J', 'P', 'G'), fps, cvSize(320, 240), AviColor);
+            // fourcc = cvGetCaptureProperty(pCapture, CV_CAP_PROP_FOURCC);
+            // int AviColor = 1;
+            // writer = cvCreateVideoWriter(outvideo, CV_FOURCC('M', 'J', 'P', 'G'), fps, cvSize(320, 240), AviColor);
         } else {
             GImage = cvCreateImage(cvSize(320,240), pImage->depth, pImage->nChannels);
             cvResize(pImage, GImage, CV_INTER_AREA);
@@ -61,14 +61,14 @@ int main(int argc, char **argv) {
             ped = detect(pHistEq);
             draw(GImage, ped);
             cvShowImage("WinPlayer", GImage);
-            assert(cvWriteFrame(writer, GImage)>0);
+            // assert(cvWriteFrame(writer, GImage)>0);
             if(GImage) cvReleaseImage(&GImage);
             if(pHistEq) cvReleaseImage(&pHistEq);
             if(cvWaitKey(10)>=0) break;
         }
     }
     cvReleaseCapture(&pCapture);
-    cvReleaseVideoWriter(&writer);
+    // cvReleaseVideoWriter(&writer);
     cvDestroyWindow("WinPlayer");
     return 0;
 }
