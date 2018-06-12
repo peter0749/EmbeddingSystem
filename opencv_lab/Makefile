@@ -1,4 +1,4 @@
-all: open_img open_vid process_img process_vid detector detector_webcam
+all: open_img open_vid process_img process_vid detector detector_webcam detect_face_lbp
 open_img: open_img.cpp cvheader.h 
 	g++ `pkg-config --cflags opencv` open_img.cpp -o open_img `pkg-config --libs opencv` -g
 process_img: process_img.cpp cvheader.h oCLAHE.o oCLAHE.h
@@ -11,8 +11,10 @@ detector: detector.cpp cvheader.h oCLAHE.o oCLAHE.h
 	g++ `pkg-config --cflags opencv` detector.cpp oCLAHE.o -o detector `pkg-config --libs opencv` -g
 detector_webcam: detector_webcam.cpp cvheader.h oCLAHE.o oCLAHE.h
 	g++ `pkg-config --cflags opencv` detector_webcam.cpp oCLAHE.o -o detector_webcam `pkg-config --libs opencv` -g
+detect_face_lbp: detect_face_lbp.cpp cvheader.h
+	g++ `pkg-config --cflags opencv` detect_face_lbp.cpp -o detect_face_lbp `pkg-config --libs opencv` -g
 oCLAHE.o: oCLAHE.cpp oCLAHE.h cvheader.h
 	g++ -w -c `pkg-config --cflags opencv` oCLAHE.cpp -o oCLAHE.o `pkg-config --libs opencv` -g
 clean:
-	rm -f open_img open_vid oCLAHE.o process_img process_vid detector detector_webcam
+	rm -f open_img open_vid oCLAHE.o process_img process_vid detector detector_webcam detect_face_lbp
 
