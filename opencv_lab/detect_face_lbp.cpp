@@ -56,7 +56,7 @@ void detectAndDisplay( Mat frame ) {
     equalizeHist( frame_gray, frame_gray );
 
     //-- Detect faces
-    face_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0, Size(30, 30) );
+    face_cascade.detectMultiScale( frame_gray, faces, 2, 2, 0, Size(10, 10) );
 
     for( size_t i = 0; i < faces.size(); ++i ) {
         Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5 );
