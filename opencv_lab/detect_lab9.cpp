@@ -13,7 +13,7 @@ using namespace cv;
 float detectAndDisplay( Mat frame );
 
 /** Global variables */
-String face_cascade_name = "lbpcascade_frontalface_improved.xml";
+String face_cascade_name = "998_763_14_35.xml";
 CascadeClassifier face_cascade;
 string window_name = "Capture - Face detection";
 RNG rng(12345);
