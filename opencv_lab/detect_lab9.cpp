@@ -124,6 +124,7 @@ int main( int argc, const char** argv ) {
 float detectAndDisplay( Mat frame ) {
     struct timeval tv1, tv2;
     struct timezone tz1, tz2;
+    const double down_scale=1.5;
     static double sum = 0.0;
     static double num = 0.0;
 	vector<Rect> faces;
@@ -134,13 +135,13 @@ float detectAndDisplay( Mat frame ) {
 
 	//-- Detect faces
     gettimeofday(&tv1, &tz1);
-	face_cascade.detectMultiScale( frame_gray, faces, 1.5, 2, 0, Size(10, 10) );
+	face_cascade.detectMultiScale( frame_gray, faces, down_scale, 2, 0, Size(10, 10) );
     gettimeofday(&tv2, &tz2);
     double diff = 1.0e6 * (tv2.tv_sec-tv1.tv_sec) + (tv2.tv_usec - tv1.tv_usec);
     sum += diff;
     num += 1.0;
     
-    cerr << "running mean: " << (sum/num) << endl;
+    cerr << frame.cols << "x" << frame.rows << "/" << down_scale << ", " << (sum/num) << endl;
 
 	float mean_cx = 0;
 	for( size_t i = 0; i < faces.size(); ++i ) {
