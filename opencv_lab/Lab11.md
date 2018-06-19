@@ -278,7 +278,25 @@ g++ `pkg-config --cflags opencv` detect_face_lbp.cpp -o detect_face_lbp `pkg-con
 或是直接使用與此文件同目錄下的 `Makefile`
 
 ```
-make -j2
+make 
+```
+
+### 連接 GPIO 4, GPIO 5
+
+如圖示將 GPIO4 與 GPIO5 分別接上一個 LED 燈泡
+
+![](/Users/kuang-yujeng/Desktop/螢幕快照 2018-06-12 下午3.18.00.png)
+
+### 執行
+
+確認 GPIO 4 和 GPIO 5 有確實連結 LED 燈泡
+
+並且 Webcam 有正確設置好
+
+執行
+
+```
+sudo ./detect_face_lbp
 ```
 
 ### 與 Lab.9 提供基於 Haar 分類器做速度上的比較
